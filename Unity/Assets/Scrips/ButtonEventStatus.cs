@@ -16,8 +16,12 @@ public class ButtonEventStatus : MonoBehaviour
     SteamVR_Input_Sources inputSourceRight = SteamVR_Input_Sources.RightHand;
     SteamVR_Input_Sources inputSourceLeft = SteamVR_Input_Sources.LeftHand;
 
-    public GameObject syncedGo;
+    public GameObject[] syncedGo;
+    public GameObject[] syncedInvertedGo;
 
+    public GameState dependsOnGameState;
+
+    public HandEvent Blub;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +29,9 @@ public class ButtonEventStatus : MonoBehaviour
         interactable = this.gameObject.GetComponent<Interactable>();
         ButtonStatus = InitialButtonStatus;
 
-        if (syncedGo != null)
-        {
-            syncedGo.SetActive(ButtonStatus);
-        }
+        GameController.Instance.RegisterStateObject(this.gameObject);
+
+        UpdateSyncedGos();
     }
 
     void Update()
@@ -54,7 +57,25 @@ public class ButtonEventStatus : MonoBehaviour
         }
     }
 
-
+    private void UpdateSyncedGos()
+    {
+        if (syncedGo != null && syncedGo.Length > 0)
+        {
+            foreach (var go in syncedGo)
+            {
+                if (go != null)
+                    go.SetActive(ButtonStatus);
+            }
+        }
+        if (syncedInvertedGo != null && syncedInvertedGo.Length > 0)
+        {
+            foreach (var go in syncedInvertedGo)
+            {
+                if (go != null)
+                    go.SetActive(!ButtonStatus);
+            }
+        }
+    }
 
     private void OnTriggerPressedOrReleased(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
     {
@@ -64,10 +85,10 @@ public class ButtonEventStatus : MonoBehaviour
             {
                 Debug.Log("Trigger was pressed on: " + this.gameObject.name + " - " + fromSource);
                 ButtonStatus = !ButtonStatus;
-                if (syncedGo != null)
-                {
-                    syncedGo.SetActive(ButtonStatus);
-                }
+
+                UpdateSyncedGos();
+
+                Blub.Invoke(interactable.hoveringHand);
 
             }
             else
