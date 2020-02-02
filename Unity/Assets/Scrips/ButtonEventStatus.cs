@@ -97,4 +97,11 @@ public class ButtonEventStatus : MonoBehaviour
             }
         }
     }
+
+    public void LeverAnim()
+    {
+        Animator anim = this.transform.GetComponentInChildren<Animator>();
+
+        anim.SetTrigger("Lever");
+    }
 }

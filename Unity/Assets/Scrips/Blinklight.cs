@@ -5,12 +5,12 @@ public class Blinklight : MonoBehaviour
     public float Interval = 1;
 
     private float timer;
-    private Light light;
+    private Light lightc;
 
     // Start is called before the first frame update
     void Start()
     {
-        light = this.gameObject.GetComponent<Light>();
+        lightc = this.gameObject.GetComponent<Light>();
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class Blinklight : MonoBehaviour
         {
             timer = Interval;
 
-            light.enabled = !light.enabled;
+            lightc.enabled = !lightc.enabled;
         }
         else
         {
