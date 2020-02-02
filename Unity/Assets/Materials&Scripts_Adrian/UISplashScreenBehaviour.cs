@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UISplashScreenBehaviour : MonoBehaviour
 {
@@ -56,5 +57,9 @@ public class UISplashScreenBehaviour : MonoBehaviour
         screenSwitcher(ScreenTitles.Instruction3);
     }
 
-
+    public void StartGame()
+    {
+        //Loads the game scene
+        SceneManager.LoadScene(1);
+    }
 }
