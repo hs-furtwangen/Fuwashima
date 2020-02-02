@@ -1796,6 +1796,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3985588464961007266, guid: db284e98543687c478838844e0f76b58,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985588464961007266, guid: db284e98543687c478838844e0f76b58,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680293953576163907, guid: db284e98543687c478838844e0f76b58,
         type: 3}
       propertyPath: m_IsActive
