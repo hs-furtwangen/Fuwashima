@@ -67,9 +67,10 @@ public class UIAndAmbientSoundManager : MonoBehaviour
 
     public void setAnouncerVoiceClip(AnnouncerClips incomingEnum)
     {
-            allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].Stop();
-            allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].clip = announcerSoundeffects[(int)incomingEnum];
-            allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].Play();
+        //allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].Stop();
+        //allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].clip = announcerSoundeffects[(int)incomingEnum];
+        //allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].Play();
+        allMainAudioSources[(int)allMainAudioSourcesEnum.Announcer].PlayOneShot(announcerSoundeffects[(int)incomingEnum]);
     }
 
     /*
@@ -238,6 +239,12 @@ public class UIAndAmbientSoundManager : MonoBehaviour
 
         }
         return convertedString;
+    }
+
+    public void PlaySound(int i)
+    {
+        Debug.Log("Playing sound " +i);
+        staticInstance.setAnouncerVoiceClip((AnnouncerClips)i);
     }
 
 }
