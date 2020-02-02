@@ -14,8 +14,6 @@ public class rubberSpawner : MonoBehaviour
 
     void spawn() 
     {
-        //this.transform.Rotate(new Vector3(Random.Range(0, 300), Random.Range(0, 300), Random.Range(0, 300)), Space.Self);
-
         if (Random.Range(0f, 1f) < rate)
         {
             int r = (int)Mathf.Floor(Random.Range(0,4));
