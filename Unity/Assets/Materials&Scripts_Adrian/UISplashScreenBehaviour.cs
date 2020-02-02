@@ -62,4 +62,9 @@ public class UISplashScreenBehaviour : MonoBehaviour
         //Loads the game scene
         SceneManager.LoadScene(1);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
